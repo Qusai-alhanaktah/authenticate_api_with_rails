@@ -1,0 +1,2699 @@
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20200820192433)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200820192433"]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-20 19:24:45.533581"], ["updated_at", "2020-08-20 19:24:45.533581"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddAuthenticationTokenToUsers (20200820192839)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "authentication_token" varchar(30)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_authentication_token" ON "users" ("authentication_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200820192839"]]
+  [1m[35m (8.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started POST "/api/v1/sign_up?user[:email]=qusai@gmail.com&user[:password]=[FILTERED]&user[:password_confirmation]=[FILTERED]" for ::1 at 2020-08-20 23:19:19 +0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+...      "Signed Up Successfully",
+...                              ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+        is_success: true,
+                    ^~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+        },status: :ok
+        ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+        "Something Went Wrong",
+                              ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+        is_success: false,
+                    ^~~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+      }, status: :unprocessable_enti...
+      ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+      "Missing Params",
+                      ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+      is_success: false,
+                  ^~~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+    }, status: :bad_request
+    ^
+):
+  
+app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:20:52 +0300
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+...      "Signed Up Successfully",
+...                              ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+        is_success: true,
+                    ^~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+        },status: :ok
+        ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+        "Something Went Wrong",
+                              ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+        is_success: false,
+                    ^~~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+      }, status: :unprocessable_enti...
+      ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+      "Missing Params",
+                      ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+      is_success: false,
+                  ^~~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+    }, status: :bad_request
+    ^
+):
+  
+app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:21:10 +0300
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+...      "Signed Up Successfully",
+...                              ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+        is_success: true,
+                    ^~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+        },status: :ok
+        ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+        "Something Went Wrong",
+                              ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+        is_success: false,
+                    ^~~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+      }, status: :unprocessable_enti...
+      ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+      "Missing Params",
+                      ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+      is_success: false,
+                  ^~~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+    }, status: :bad_request
+    ^
+):
+  
+app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:21:24 +0300
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+...      "Signed Up Successfully",
+...                              ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+        is_success: true,
+                    ^~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+        },status: :ok
+        ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+        "Something Went Wrong",
+                              ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+        is_success: false,
+                    ^~~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+      }, status: :unprocessable_enti...
+      ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+      "Missing Params",
+                      ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+      is_success: false,
+                  ^~~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+    }, status: :bad_request
+    ^
+):
+  
+app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:21:40 +0300
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+...      "Signed Up Successfully",
+...                              ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+        is_success: true,
+                    ^~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+        },status: :ok
+        ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+        "Something Went Wrong",
+                              ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+        is_success: false,
+                    ^~~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+      }, status: :unprocessable_enti...
+      ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+      "Missing Params",
+                      ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+      is_success: false,
+                  ^~~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+    }, status: :bad_request
+    ^
+):
+  
+app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:21:48 +0300
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+...      "Signed Up Successfully",
+...                              ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+        is_success: true,
+                    ^~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+        },status: :ok
+        ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+        "Something Went Wrong",
+                              ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+        is_success: false,
+                    ^~~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+      }, status: :unprocessable_enti...
+      ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+      "Missing Params",
+                      ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+      is_success: false,
+                  ^~~~~
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+    }, status: :bad_request
+    ^
+):
+  
+app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:7: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:8: Can't assign to true
+app/controllers/api/v1/registrations_controller.rb:10: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:13: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:14: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:16: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/registrations_controller.rb:28: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/registrations_controller.rb:29: Can't assign to false
+app/controllers/api/v1/registrations_controller.rb:31: syntax error, unexpected '}', expecting `end'
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:23:19 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::RegistrationsController#create as JSON
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 288)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:23:59 +0300
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{":email"=>"qusai@gmail.com"}}
+[31mUnpermitted parameter: ::email[0m
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 5818)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:24:10 +0300
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{":email"=>"qusai@gmail.com", ":password"=>"[FILTERED]", ":password_confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: ::email, ::password, ::password_confirmation[0m
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 359)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:24:11 +0300
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{":email"=>"qusai@gmail.com", ":password"=>"[FILTERED]", ":password_confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: ::email, ::password, ::password_confirmation[0m
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 358)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:24:13 +0300
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{":email"=>"qusai@gmail.com", ":password"=>"[FILTERED]", ":password_confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: ::email, ::password, ::password_confirmation[0m
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 358)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:24:31 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{":email"=>"qusai@gmail.com", ":password"=>"[FILTERED]", ":password_confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: ::email, ::password, ::password_confirmation[0m
+Completed 422 Unprocessable Entity in 13ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 10229)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:24:44 +0300
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{":email"=>"qusai1997@gmail.com", ":password"=>"[FILTERED]", ":password_confirmation"=>"[FILTERED]"}}
+[31mUnpermitted parameters: ::email, ::password, ::password_confirmation[0m
+Completed 422 Unprocessable Entity in 2ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1032)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:25:34 +0300
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"qusai1997@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qusai1997@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+Completed 422 Unprocessable Entity in 247ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 5876)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:26:05 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"qusai1997@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qusai1997@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+Completed 422 Unprocessable Entity in 242ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 8865)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:26:14 +0300
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"qusai199e1e7@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qusai199e1e7@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+Completed 422 Unprocessable Entity in 276ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 3332)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:26:24 +0300
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"qusai199e1e7@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qusai199e1e7@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+Completed 422 Unprocessable Entity in 238ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 3326)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:28:23 +0300
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"qusai199e1e7@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qusai199e1e7@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+Completed 422 Unprocessable Entity in 234ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 3325)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:29:20 +0300
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"qusai199e1e7@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qusai199e1e7@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "zAHf_dLxwRqByg28QhRo"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "qusai199e1e7@gmail.com"], ["encrypted_password", "$2a$12$bKRXVPN/AwZ3A4OLiICWde8R5Col0hZSnwflL32Lvrc5qP5MrmYU."], ["created_at", "2020-08-20 20:29:20.928389"], ["updated_at", "2020-08-20 20:29:20.928389"], ["authentication_token", "zAHf_dLxwRqByg28QhRo"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+Completed 200 OK in 246ms (Views: 0.3ms | ActiveRecord: 2.9ms | Allocations: 5857)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:35:51 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:36:11 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:36:12 +0300
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:38:16 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:6: syntax error, unexpected ')', expecting =>
+...sfully", true, user: user, :ok)
+...                              ^
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/api/v1/registrations_controller.rb:6: syntax error, unexpected ')', expecting =>
+app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/api/v1/registrations_controller.rb:6: syntax error, unexpected ')', expecting =>
+app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:39:08 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:6: syntax error, unexpected '\n', expecting =>
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/api/v1/registrations_controller.rb:6: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/api/v1/registrations_controller.rb:6: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:40:10 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:6: syntax error, unexpected '\n', expecting =>
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/api/v1/registrations_controller.rb:6: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/api/v1/registrations_controller.rb:6: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:42:28 +0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:6: syntax error, unexpected '\n', expecting =>
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/api/v1/registrations_controller.rb:6: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/api/v1/registrations_controller.rb:6: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:43:19 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:6: syntax error, unexpected '\n', expecting =>
+/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:20: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/api/v1/registrations_controller.rb:6: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/registrations_controller.rb:20: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/api/v1/registrations_controller.rb:6: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/registrations_controller.rb:20: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:44:09 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:20: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/api/v1/registrations_controller.rb:20: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/api/v1/registrations_controller.rb:20: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:44:43 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/api/v1/registrations_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:45:07 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"qusai199e1e7@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qusai199e1e7@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+Completed 422 Unprocessable Entity in 249ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 11767)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-20 23:45:14 +0300
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"qusai199e17@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qusai199e17@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "8mBkrzrCe7mjEvZtdzoY"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "qusai199e17@gmail.com"], ["encrypted_password", "$2a$12$r6wE36TvD1zjd8Y4/rIAie/JHg8kp/y.9pTC3kkGOrvGvmqv65Oga"], ["created_at", "2020-08-20 20:45:15.196769"], ["updated_at", "2020-08-20 20:45:15.196769"], ["authentication_token", "8mBkrzrCe7mjEvZtdzoY"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[35m (7.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+Completed 200 OK in 262ms (Views: 0.6ms | ActiveRecord: 8.1ms | Allocations: 5874)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-21 00:02:58 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"sign_in"=>{"email"=>"qusai@gmail.com", "password"=>"[FILTERED]"}}
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 260)
+
+
+Started POST "/api/v1/sign_in" for ::1 at 2020-08-21 00:03:04 +0300
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"sign_in"=>{"email"=>"qusai@gmail.com", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 274)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 1)):
+  
+app/controllers/api/v1/sessions_controller.rb:18:in `load_user'
+Started POST "/api/v1/sign_in" for ::1 at 2020-08-21 00:04:15 +0300
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"sign_in"=>{"email"=>"qusai@gmail.com", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 188)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 1)):
+  
+app/controllers/api/v1/sessions_controller.rb:18:in `load_user'
+Started POST "/api/v1/sign_in" for ::1 at 2020-08-21 00:05:28 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"sign_in"=>{"email"=>"qusai@gmail.com", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 35525ms (ActiveRecord: 0.0ms | Allocations: 70836)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 1)):
+  
+app/controllers/api/v1/sessions_controller.rb:19:in `load_user'
+Started POST "/api/v1/sign_in" for ::1 at 2020-08-21 00:10:49 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"sign_in"=>{"email"=>"qusai@gmail.com", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1866)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 1)):
+  
+app/controllers/api/v1/sessions_controller.rb:19:in `load_user'
+Started POST "/api/v1/sign_in" for ::1 at 2020-08-21 00:11:33 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"sign_in"=>{"email"=>"qusai@gmail.com", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1648)
+
+
+  
+NoMethodError (undefined method `key?' for "qusai@gmail.com":String):
+  
+app/controllers/api/v1/sessions_controller.rb:18:in `load_user'
+Started POST "/api/v1/sign_in" for ::1 at 2020-08-21 00:12:13 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"sign_in"=>{"email"=>"qusai@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "qusai@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:18:in `load_user'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.6ms | Allocations: 1978)
+
+
+  
+ArgumentError (Unrecognized status code :failure):
+  
+app/controllers/concerns/response.rb:3:in `render_response'
+app/controllers/api/v1/sessions_controller.rb:22:in `load_user'
+Started POST "/api/v1/sign_in" for ::1 at 2020-08-21 00:13:45 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"sign_in"=>{"email"=>"qusai@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "qusai@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:18:in `load_user'
+Filter chain halted as :load_user rendered or redirected
+Completed 400 Bad Request in 6ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 1969)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-21 00:15:24 +0300
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"1234@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "1234@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "rLyv2FyzJwrfy_z8SrAP"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "1234@gmail.com"], ["encrypted_password", "$2a$12$O5fXqFYIJlpcrib/OZ9bUef0m6Kr2gftGHHTp6BsUWWTXvHxiFAxm"], ["created_at", "2020-08-20 21:15:25.131874"], ["updated_at", "2020-08-20 21:15:25.131874"], ["authentication_token", "rLyv2FyzJwrfy_z8SrAP"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:5:in `create'
+Completed 200 OK in 254ms (Views: 0.4ms | ActiveRecord: 8.7ms | Allocations: 10245)
+
+
+Started POST "/api/v1/sign_in" for ::1 at 2020-08-21 00:15:50 +0300
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"sign_in"=>{"email"=>"1234@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "1234@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:18:in `load_user'
+Completed 200 OK in 235ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1288)
+
+
+Started POST "/api/v1/sign_in" for ::1 at 2020-08-21 00:15:58 +0300
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"sign_in"=>{"email"=>"1234@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "1234@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:18:in `load_user'
+Completed 401 Unauthorized in 235ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 1030)
+
+
+Started POST "/api/v1/sign_in" for ::1 at 2020-08-21 15:36:35 +0300
+  
+SyntaxError (/home/qusai/rails_api/app/models/user.rb:10: syntax error, unexpected ':', expecting `end'
+...ributes = authentication_token: token
+...                              ^
+):
+  
+app/models/user.rb:10: syntax error, unexpected ':', expecting `end'
+app/models/user.rb:10: syntax error, unexpected ':', expecting `end'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started POST "/api/v1/sign_in" for ::1 at 2020-08-21 15:37:30 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ArgumentError (Before process_action callback :verify_sign_out_user has not been defined):
+  
+app/controllers/api/v1/sessions_controller.rb:5:in `<class:SessionsController>'
+app/controllers/api/v1/sessions_controller.rb:1:in `<main>'
+Started POST "/api/v1/sign_in" for ::1 at 2020-08-21 15:42:06 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"sign_in"=>{"email"=>"1234@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "1234@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:26:in `load_user'
+Completed 401 Unauthorized in 241ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 6418)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2020-08-21 15:42:36 +0300
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"sign_in"=>{"email"=>"1234@gmail.com", "password"=>"[FILTERED]"}}
+Filter chain halted as :ensure_params_exist rendered or redirected
+Completed 400 Bad Request in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 247)
+
+
+Started POST "/api/v1/sign_in" for ::1 at 2020-08-21 15:42:55 +0300
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"sign_in"=>{"email"=>"1234@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "1234@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:26:in `load_user'
+Completed 200 OK in 235ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 1245)
+
+
+Started POST "/api/v1/sign_in" for ::1 at 2020-08-21 15:42:59 +0300
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"sign_in"=>{"email"=>"1234@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "1234@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:26:in `load_user'
+Completed 200 OK in 237ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1233)
+
+
+Started DELETE "/api/v1/sign_out" for ::1 at 2020-08-21 15:44:57 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::SessionsController#destroy as JSON
+  Parameters: {"sign_in"=>{"email"=>"1234@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "rLyv2FyzJwrfy_z8SrAP"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:34:in `valid_token'
+DEPRECATION WARNING: update_attributes is deprecated and will be removed from Rails 6.1 (please, use update instead) (called from generate_new_authentication_token at /home/qusai/rails_api/app/models/user.rb:10)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:10:in `generate_new_authentication_token'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "authentication_token" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["updated_at", "2020-08-21 12:44:57.431166"], ["id", 3]]
+  ↳ app/models/user.rb:10:in `generate_new_authentication_token'
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:10:in `generate_new_authentication_token'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 3.0ms | Allocations: 9887)
+
+
+Started DELETE "/api/v1/sign_out" for ::1 at 2020-08-21 15:46:38 +0300
+Processing by Api::V1::SessionsController#destroy as JSON
+  Parameters: {"sign_in"=>{"email"=>"1234@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "rLyv2FyzJwrfy_z8SrAP"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:34:in `valid_token'
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms | Allocations: 670)
+
+
+  
+ArgumentError (Unrecognized status code :failure):
+  
+app/controllers/concerns/response.rb:3:in `render_response'
+app/controllers/api/v1/sessions_controller.rb:38:in `valid_token'
+Started DELETE "/api/v1/sign_out" for ::1 at 2020-08-21 15:47:04 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::SessionsController#destroy as JSON
+  Parameters: {"sign_in"=>{"email"=>"1234@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "rLyv2FyzJwrfy_z8SrAP"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:34:in `valid_token'
+Filter chain halted as :valid_token rendered or redirected
+Completed 400 Bad Request in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 1597)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddFieldsToUsers (20200821130619)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "uid" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "image" varchar[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200821130619"]]
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 16:26:23 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAEu0yJ1BOxQYb0aZC6kVLdCeSJHuXN7M965HvL7laXYDFaHPVvTyvvFsOEWZAzA1ZCDZC6K5mJGLNLx6mgiZCx0bUsCg9xZCzbeKX8rwwdIjBab40WhwQfuPpi4KRFFvaNh5YgAzyOXfqMtsge0LJoZBnw720bY9dKnEfrs1TpB9HBt6bvriZAgjTHfPy2eSB4Ub9GxzqIG4D6iDt53wNCNsZA94xmVwZAhAZDZD"}
+Completed 422 Unprocessable Entity in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 152)
+
+
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 16:26:45 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_tooken"=>"EAADkfctH770BAEu0yJ1BOxQYb0aZC6kVLdCeSJHuXN7M965HvL7laXYDFaHPVvTyvvFsOEWZAzA1ZCDZC6K5mJGLNLx6mgiZCx0bUsCg9xZCzbeKX8rwwdIjBab40WhwQfuPpi4KRFFvaNh5YgAzyOXfqMtsge0LJoZBnw720bY9dKnEfrs1TpB9HBt6bvriZAgjTHfPy2eSB4Ub9GxzqIG4D6iDt53wNCNsZA94xmVwZAhAZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1858)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 16:27:05 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_tooken"=>"EAADkfctH770BAEu0yJ1BOxQYb0aZC6kVLdCeSJHuXN7M965HvL7laXYDFaHPVvTyvvFsOEWZAzA1ZCDZC6K5mJGLNLx6mgiZCx0bUsCg9xZCzbeKX8rwwdIjBab40WhwQfuPpi4KRFFvaNh5YgAzyOXfqMtsge0LJoZBnw720bY9dKnEfrs1TpB9HBt6bvriZAgjTHfPy2eSB4Ub9GxzqIG4D6iDt53wNCNsZA94xmVwZAhAZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 16:42:42 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_tooken"=>"EAADkfctH770BAAXQBczD9WVjB4nrVIeyR5D0TkTSpJt6v8YZBa9SqZBdQqZCis72r8mTBaMmPGQDTTiE64h9kuZB3B0kg6zS1exEMWlAgRQLCZBJZAMq9pQE7Cizs003cuWTES1ulwqBWPE5Q7q2tgmDXT2ZA0Xd1rBBwjVpUcmXzcUyTxtUlGgZCDasdZCtD3il05DBqKqF6RRnu1dnO5UjQ5Whb4TxIsNQDown8bBsTSwZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 16:44:07 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_tooken"=>"EAADkfctH770BAAXQBczD9WVjB4nrVIeyR5D0TkTSpJt6v8YZBa9SqZBdQqZCis72r8mTBaMmPGQDTTiE64h9kuZB3B0kg6zS1exEMWlAgRQLCZBJZAMq9pQE7Cizs003cuWTES1ulwqBWPE5Q7q2tgmDXT2ZA0Xd1rBBwjVpUcmXzcUyTxtUlGgZCDasdZCtD3il05DBqKqF6RRnu1dnO5UjQ5Whb4TxIsNQDown8bBsTSwZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1872)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 16:48:42 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_tooken"=>"EAADkfctH770BAAXQBczD9WVjB4nrVIeyR5D0TkTSpJt6v8YZBa9SqZBdQqZCis72r8mTBaMmPGQDTTiE64h9kuZB3B0kg6zS1exEMWlAgRQLCZBJZAMq9pQE7Cizs003cuWTES1ulwqBWPE5Q7q2tgmDXT2ZA0Xd1rBBwjVpUcmXzcUyTxtUlGgZCDasdZCtD3il05DBqKqF6RRnu1dnO5UjQ5Whb4TxIsNQDown8bBsTSwZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 16:56:05 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_tooken"=>"EAADkfctH770BADkSRoCoy76lIU9SSvgZAq5vS6MZBLLPVPp5ZBVZAZBGRD91GP3uEJxYAg7RYhsKoWwE5OMJEjIttHDYdaZBIdDD9yZCAAjlsBVrtmbJFtXNt05joG4KUzAJyFwfUIyaGcOOOQ6a8tIOXlybYFYq2K3HFdZCKauCyBegvCN1FV1Uo0LfZCIHihmkABke9WGURI7MLjyUSNLCzZBKvuXiPrOLlGpSNqYxHeeQZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 16:57:12 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BADkSRoCoy76lIU9SSvgZAq5vS6MZBLLPVPp5ZBVZAZBGRD91GP3uEJxYAg7RYhsKoWwE5OMJEjIttHDYdaZBIdDD9yZCAAjlsBVrtmbJFtXNt05joG4KUzAJyFwfUIyaGcOOOQ6a8tIOXlybYFYq2K3HFdZCKauCyBegvCN1FV1Uo0LfZCIHihmkABke9WGURI7MLjyUSNLCzZBKvuXiPrOLlGpSNqYxHeeQZDZD"}
+Completed 422 Unprocessable Entity in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 152)
+
+
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 16:57:31 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BADkSRoCoy76lIU9SSvgZAq5vS6MZBLLPVPp5ZBVZAZBGRD91GP3uEJxYAg7RYhsKoWwE5OMJEjIttHDYdaZBIdDD9yZCAAjlsBVrtmbJFtXNt05joG4KUzAJyFwfUIyaGcOOOQ6a8tIOXlybYFYq2K3HFdZCKauCyBegvCN1FV1Uo0LfZCIHihmkABke9WGURI7MLjyUSNLCzZBKvuXiPrOLlGpSNqYxHeeQZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1872)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 16:57:56 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BADkSRoCoy76lIU9SSvgZAq5vS6MZBLLPVPp5ZBVZAZBGRD91GP3uEJxYAg7RYhsKoWwE5OMJEjIttHDYdaZBIdDD9yZCAAjlsBVrtmbJFtXNt05joG4KUzAJyFwfUIyaGcOOOQ6a8tIOXlybYFYq2K3HFdZCKauCyBegvCN1FV1Uo0LfZCIHihmkABke9WGURI7MLjyUSNLCzZBKvuXiPrOLlGpSNqYxHeeQZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 16:59:03 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 16:59:12 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:27 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:28 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:29 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:29 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:30 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:31 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:32 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:32 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:34 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:35 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:36 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:37 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:38 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:39 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:40 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:41 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:42 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:42 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:43 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:44 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:44 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:45 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:46 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:46 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:47 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:48 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:48 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:49 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:49 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:01:50 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:06:39 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:06:42 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1855)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Koala):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:06:53 +0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 400ms (ActiveRecord: 0.0ms | Allocations: 2287)
+
+
+  
+Koala::Facebook::ClientError (type: OAuthException, code: 4, message: (#4) Application request limit reached, x-fb-trace-id: G4Oo7zss32+ [HTTP 403]):
+  
+app/controllers/api/v1/users_controller.rb:6:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:07:51 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAADkfctH770BAC62EPm7DyhyzyQjfw38fDZBWYfZCfqYIlfOoEoqeI7YZAmglUxBZBeS9DhQw5awg0x7FU14aYvG8IhM56dFYpdlahECcCKQP3liAAwlNTx6ux7nEEUjGW08Jq7eHBodKh8hop3531K6DubzelgSnJmvueCOpg9w1arl7YUNtMZCzwSnQOdrPoVgZCdrU6EgZDZD"}
+Completed 500 Internal Server Error in 399ms (ActiveRecord: 0.0ms | Allocations: 1365)
+
+
+  
+Koala::Facebook::ClientError (type: OAuthException, code: 4, message: (#4) Application request limit reached, x-fb-trace-id: FlXH0WMnek6 [HTTP 403]):
+  
+app/controllers/api/v1/users_controller.rb:6:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:09:24 +0300
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD"}
+Completed 500 Internal Server Error in 380ms (ActiveRecord: 0.0ms | Allocations: 1344)
+
+
+  
+Koala::Facebook::ClientError (type: GraphMethodException, code: 100, message: Invalid appsecret_proof provided in the API argument, x-fb-trace-id: FnAeB8Rkbi+ [HTTP 400]):
+  
+app/controllers/api/v1/users_controller.rb:6:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:11:17 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD"}
+Completed 500 Internal Server Error in 360ms (ActiveRecord: 0.0ms | Allocations: 1493)
+
+
+  
+Koala::Facebook::ClientError (type: GraphMethodException, code: 100, message: Invalid appsecret_proof provided in the API argument, x-fb-trace-id: BUN/TZYozxO [HTTP 400]):
+  
+app/controllers/api/v1/users_controller.rb:6:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:17:06 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD"}
+Completed 500 Internal Server Error in 364ms (ActiveRecord: 0.0ms | Allocations: 1298)
+
+
+  
+Koala::Facebook::ClientError (type: GraphMethodException, code: 100, message: Invalid appsecret_proof provided in the API argument, x-fb-trace-id: HC7hJcr7lDE [HTTP 400]):
+  
+app/controllers/api/v1/users_controller.rb:6:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:20:01 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD"}
+Completed 500 Internal Server Error in 401ms (ActiveRecord: 0.0ms | Allocations: 1491)
+
+
+  
+Koala::Facebook::ClientError (type: GraphMethodException, code: 100, message: Invalid appsecret_proof provided in the API argument, x-fb-trace-id: FjD1zlDs6mm [HTTP 400]):
+  
+app/controllers/api/v1/users_controller.rb:6:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:22:00 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1896)
+
+
+  
+NameError (uninitialized constant Koala::Facebook::GraphAPI
+Did you mean?  Koala::Facebook::GraphBatchAPI):
+  
+app/controllers/api/v1/users_controller.rb:5:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:22:14 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1305)
+
+
+  
+NoMethodError (undefined method `access_token' for #<String:0x00007fb1cc1326f0>):
+  
+app/controllers/api/v1/users_controller.rb:6:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:22:42 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD"}
+Completed 500 Internal Server Error in 414ms (ActiveRecord: 0.0ms | Allocations: 1493)
+
+
+  
+Koala::Facebook::ClientError (type: GraphMethodException, code: 100, message: Invalid appsecret_proof provided in the API argument, x-fb-trace-id: E0ZLaiCqMHL [HTTP 400]):
+  
+app/controllers/api/v1/users_controller.rb:6:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:25:20 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD"}
+Completed 500 Internal Server Error in 201008ms (ActiveRecord: 0.0ms | Allocations: 141164)
+
+
+  
+Koala::Facebook::ClientError (type: GraphMethodException, code: 100, message: Invalid appsecret_proof provided in the API argument, x-fb-trace-id: CaXv6pSPuds [HTTP 400]):
+  
+app/controllers/api/v1/users_controller.rb:7:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:30:03 +0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qusiealhnakta@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `facebook'
+Completed 500 Internal Server Error in 210245ms (ActiveRecord: 1.0ms | Allocations: 111902)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/v1/users_controller.rb:15:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:33:41 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qusiealhnakta@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `facebook'
+Completed 500 Internal Server Error in 359ms (ActiveRecord: 1.1ms | Allocations: 3442)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/v1/users_controller.rb:14:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:34:18 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qusiealhnakta@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `facebook'
+Completed 500 Internal Server Error in 546ms (ActiveRecord: 1.5ms | Allocations: 3440)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/v1/users_controller.rb:14:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:34:34 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qusiealhnakta@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `facebook'
+Completed 500 Internal Server Error in 77589ms (ActiveRecord: 0.9ms | Allocations: 6139)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/api/v1/users_controller.rb:14:in `facebook'
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:35:56 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qusiealhnakta@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:7:in `facebook'
+Completed 500 Internal Server Error in 392ms (ActiveRecord: 1.4ms | Allocations: 8851)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'provider' for User.):
+  
+app/controllers/api/v1/users_controller.rb:12:in `facebook'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddFieldToUsers (20200821143650)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "provider" varchar[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200821143650"]]
+  [1m[35m (7.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/facebook" for ::1 at 2020-08-21 17:36:56 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#facebook as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qusiealhnakta@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:7:in `facebook'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/users_controller.rb:21:in `facebook'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qusiealhnakta@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:21:in `facebook'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token", "uid", "image", "provider") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "qusiealhnakta@yahoo.com"], ["encrypted_password", "$2a$12$2VJt93zDeM//N7yXdSsxNuBPaXZeRfUnDZ19gMRAS7S5dhKV/dFkO"], ["created_at", "2020-08-21 14:36:57.158914"], ["updated_at", "2020-08-21 14:36:57.158914"], ["authentication_token", "xAHSjFjZ6wyyT88iVoC1ASS6"], ["uid", "3184394724971852"], ["image", "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=3184394724971852&height=50&width=50&ext=1600612616&hash=AeQr6KPA4sElq9Co"], ["provider", "facebook"]]
+  ↳ app/controllers/api/v1/users_controller.rb:21:in `facebook'
+  [1m[35m (7.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/users_controller.rb:21:in `facebook'
+Completed 200 OK in 632ms (Views: 0.5ms | ActiveRecord: 9.9ms | Allocations: 14396)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBooks (20200821144518)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "books" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "image" varchar, "author" varchar, "title" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200821144518"]]
+  [1m[35m (8.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateReviews (20200821144715)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateReviews (20200821144753)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "current_rating" integer, "recommend_rating" integer, "average_rating" integer, "user_id" integer NOT NULL, "book_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_924a0b30ca"
+FOREIGN KEY ("book_id")
+  REFERENCES "books" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_reviews_on_user_id" ON "reviews" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_reviews_on_book_id" ON "reviews" ("book_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200821144753"]]
+  [1m[35m (8.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBook Create (0.6ms)[0m  [1m[32mINSERT INTO "books" ("image", "author", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["image", "https://robohash.org/doloreseosperferendis.png?size=300x300&set=set1"], ["author", "Pres. Elma Kunde"], ["title", "Fair Stood the Wind for France"], ["created_at", "2020-08-21 14:56:57.434587"], ["updated_at", "2020-08-21 14:56:57.434587"]]
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBook Create (0.3ms)[0m  [1m[32mINSERT INTO "books" ("image", "author", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["image", "https://robohash.org/recusandaeaccusamusillo.png?size=300x300&set=set1"], ["author", "Jacques Kreiger"], ["title", "Now Sleeps the Crimson Petal"], ["created_at", "2020-08-21 14:56:57.444786"], ["updated_at", "2020-08-21 14:56:57.444786"]]
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBook Create (0.2ms)[0m  [1m[32mINSERT INTO "books" ("image", "author", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["image", "https://robohash.org/ipsumeavoluptatem.png?size=300x300&set=set1"], ["author", "Abe Lehner"], ["title", "Recalled to Life"], ["created_at", "2020-08-21 14:56:57.450387"], ["updated_at", "2020-08-21 14:56:57.450387"]]
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBook Create (0.2ms)[0m  [1m[32mINSERT INTO "books" ("image", "author", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["image", "https://robohash.org/maioresnemoaut.png?size=300x300&set=set1"], ["author", "Marlin Kassulke"], ["title", "What's Become of Waring"], ["created_at", "2020-08-21 14:56:57.457151"], ["updated_at", "2020-08-21 14:56:57.457151"]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBook Create (0.3ms)[0m  [1m[32mINSERT INTO "books" ("image", "author", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["image", "https://robohash.org/animiblanditiisquidem.png?size=300x300&set=set1"], ["author", "Ray McKenzie"], ["title", "Fear and Trembling"], ["created_at", "2020-08-21 14:56:57.463483"], ["updated_at", "2020-08-21 14:56:57.463483"]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBook Create (0.2ms)[0m  [1m[32mINSERT INTO "books" ("image", "author", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["image", "https://robohash.org/eospraesentiumquia.png?size=300x300&set=set1"], ["author", "Sue Sauer"], ["title", "No Longer at Ease"], ["created_at", "2020-08-21 14:56:57.471003"], ["updated_at", "2020-08-21 14:56:57.471003"]]
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBook Create (0.3ms)[0m  [1m[32mINSERT INTO "books" ("image", "author", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["image", "https://robohash.org/praesentiumveritatissapiente.png?size=300x300&set=set1"], ["author", "Carmelia Schowalter"], ["title", "Pale Kings and Princes"], ["created_at", "2020-08-21 14:56:57.477716"], ["updated_at", "2020-08-21 14:56:57.477716"]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBook Create (0.2ms)[0m  [1m[32mINSERT INTO "books" ("image", "author", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["image", "https://robohash.org/corruptietquaerat.png?size=300x300&set=set1"], ["author", "Lemuel Zemlak"], ["title", "The Mirror Crack'd from Side to Side"], ["created_at", "2020-08-21 14:56:57.483804"], ["updated_at", "2020-08-21 14:56:57.483804"]]
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBook Create (0.2ms)[0m  [1m[32mINSERT INTO "books" ("image", "author", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["image", "https://robohash.org/cumquovoluptas.png?size=300x300&set=set1"], ["author", "Audie Gulgowski"], ["title", "An Acceptable Time"], ["created_at", "2020-08-21 14:56:57.492791"], ["updated_at", "2020-08-21 14:56:57.492791"]]
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mBook Create (0.3ms)[0m  [1m[32mINSERT INTO "books" ("image", "author", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["image", "https://robohash.org/alaborumeum.png?size=300x300&set=set1"], ["author", "Brett Gleason Ret."], ["title", "Of Human Bondage"], ["created_at", "2020-08-21 14:56:57.498580"], ["updated_at", "2020-08-21 14:56:57.498580"]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /home/qusai/.rbenv/versions/2.7.1/bin/rake:23)
+Started GET "/api/v1/books" for ::1 at 2020-08-21 18:05:22 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Api::V1::BooksController
+Did you mean?  Api::V1::BookController):
+  
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:92:in `rescue in controller_class_for'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /home/qusai/.rbenv/versions/2.7.1/bin/rake:23)
+Started GET "/api/v1/books" for ::1 at 2020-08-21 18:06:39 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (uninitialized constant Api::V1::BooksController
+Did you mean?  Api::V1::BookController):
+  
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:92:in `rescue in controller_class_for'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/api/v1/books" for ::1 at 2020-08-21 18:08:56 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (uninitialized constant Api::V1::BooksController
+Did you mean?  Api::V1::BookController):
+  
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:92:in `rescue in controller_class_for'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/api/v1/books" for ::1 at 2020-08-21 18:09:26 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (uninitialized constant Api::V1::BooksController
+Did you mean?  Api::V1::BookController):
+  
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:92:in `rescue in controller_class_for'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /home/qusai/.rbenv/versions/2.7.1/bin/rake:23)
+Started GET "/api/v1/books" for ::1 at 2020-08-21 18:09:54 +0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Api::V1::BooksController
+Did you mean?  Api::V1::BookController):
+  
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:92:in `rescue in controller_class_for'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /home/qusai/.rbenv/versions/2.7.1/bin/rake:23)
+Started GET "/api/v1/books" for ::1 at 2020-08-21 18:12:05 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (uninitialized constant Api::V1::BooksController
+Did you mean?  Api::V1::BookController):
+  
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:92:in `rescue in controller_class_for'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/api/v1/books" for ::1 at 2020-08-21 18:12:34 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/books"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /home/qusai/.rbenv/versions/2.7.1/bin/rake:23)
+Started GET "/api/v1/books" for ::1 at 2020-08-21 18:12:41 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/books"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /home/qusai/.rbenv/versions/2.7.1/bin/rake:23)
+Started GET "/api/v1/books" for ::1 at 2020-08-21 18:13:33 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/books"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/api/v1/book" for ::1 at 2020-08-21 18:14:06 +0300
+Processing by Api::V1::BookController#index as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD"}
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `render_response'
+Completed 200 OK in 12ms (Views: 8.7ms | ActiveRecord: 1.2ms | Allocations: 6825)
+
+
+Started GET "/api/v1/book/11" for ::1 at 2020-08-21 18:14:54 +0300
+Processing by Api::V1::BookController#show as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD", "id"=>"11"}
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/book_controller.rb:14:in `load_book'
+Completed 500 Internal Server Error in 83ms (ActiveRecord: 0.2ms | Allocations: 71512)
+
+
+  
+NameError (undefined local variable or method `book' for #<Api::V1::BookController:0x000055d0a4bc1e50>
+Did you mean?  @book):
+  
+app/controllers/api/v1/book_controller.rb:15:in `load_book'
+Started GET "/api/v1/book/1" for ::1 at 2020-08-21 18:15:00 +0300
+Processing by Api::V1::BookController#show as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD", "id"=>"1"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/book_controller.rb:14:in `load_book'
+Completed 500 Internal Server Error in 99ms (ActiveRecord: 0.1ms | Allocations: 70013)
+
+
+  
+NameError (undefined local variable or method `book' for #<Api::V1::BookController:0x00007fcacc3db3e8>
+Did you mean?  @book):
+  
+app/controllers/api/v1/book_controller.rb:15:in `load_book'
+Started GET "/api/v1/book" for ::1 at 2020-08-21 18:15:10 +0300
+Processing by Api::V1::BookController#index as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD"}
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `render_response'
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.2ms | Allocations: 2386)
+
+
+Started GET "/api/v1/book/2" for ::1 at 2020-08-21 18:15:32 +0300
+Processing by Api::V1::BookController#show as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD", "id"=>"2"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/book_controller.rb:14:in `load_book'
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 0.1ms | Allocations: 69994)
+
+
+  
+NameError (undefined local variable or method `book' for #<Api::V1::BookController:0x00007fcacc3d3eb8>
+Did you mean?  @book):
+  
+app/controllers/api/v1/book_controller.rb:15:in `load_book'
+Started GET "/api/v1/book/2" for ::1 at 2020-08-21 18:15:36 +0300
+Processing by Api::V1::BookController#show as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD", "id"=>"2"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/book_controller.rb:14:in `load_book'
+Completed 500 Internal Server Error in 75ms (ActiveRecord: 0.1ms | Allocations: 69993)
+
+
+  
+NameError (undefined local variable or method `book' for #<Api::V1::BookController:0x00007fcacc3d02e0>
+Did you mean?  @book):
+  
+app/controllers/api/v1/book_controller.rb:15:in `load_book'
+Started GET "/api/v1/book/2" for ::1 at 2020-08-21 18:16:10 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::BookController#show as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD", "id"=>"2"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/book_controller.rb:14:in `load_book'
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 0.5ms | Allocations: 5030)
+
+
+Started GET "/api/v1/book/11" for ::1 at 2020-08-21 18:16:16 +0300
+Processing by Api::V1::BookController#show as JSON
+  Parameters: {"facebook_access_token"=>"EAAK4pFplYeoBAJKcqKd712D6IREdZBXlt22Hm8jnnlPrZAvI0YVivdGZA2iZAGPPedIHwpv2FHCS1AIT6Qzj1WXcuwZA7Dm6w7ZCdY6Pl5RXngp3ZALMaClW3JUkRgz5X744tx5vvZAd0WbjnLKFXTnrNUENTjWfsyZCtP1gvjKF7LKNib8EXSrkSxqccIl598LHK38fnoZAhpVrZB5k5mdaUSHKxwbExg4Lehwn3PimWDpgAZDZD", "id"=>"11"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/book_controller.rb:14:in `load_book'
+Filter chain halted as :load_book rendered or redirected
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 653)
+
+
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /home/qusai/.rbenv/versions/2.7.1/bin/rake:23)
+Started POST "/api/v1/sign_in" for ::1 at 2020-08-21 18:35:49 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"sign_in"=>{"email"=>"1234@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "1234@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:26:in `load_user'
+Completed 200 OK in 246ms (Views: 0.5ms | ActiveRecord: 0.7ms | Allocations: 8998)
+
+
+Started POST "/api/v1/book/1/reviews" for ::1 at 2020-08-21 18:37:39 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/book/1/reviews"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/api/v1/book/1/review" for ::1 at 2020-08-21 18:37:47 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/book/1/review"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /home/qusai/.rbenv/versions/2.7.1/bin/rake:23)
+Started POST "/api/v1/book/1/review" for ::1 at 2020-08-21 18:39:27 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/book/1/review"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/api/v1/book/1/reviews" for ::1 at 2020-08-21 18:39:32 +0300
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/reviews_controller.rb:4: syntax error, unexpected local variable or method, expecting `end'
+... :authenticate_with_token! only: :create
+...                           ^~~~
+/home/qusai/rails_api/app/controllers/api/v1/reviews_controller.rb:8: syntax error, unexpected '\n', expecting =>
+/home/qusai/rails_api/app/controllers/api/v1/reviews_controller.rb:12: syntax error, unexpected '\n', expecting =>
+/home/qusai/rails_api/app/controllers/api/v1/reviews_controller.rb:21: syntax error, unexpected '\n', expecting =>
+/home/qusai/rails_api/app/controllers/api/v1/reviews_controller.rb:29: syntax error, unexpected '\n', expecting =>
+/home/qusai/rails_api/app/controllers/api/v1/reviews_controller.rb:68: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/api/v1/reviews_controller.rb:4: syntax error, unexpected local variable or method, expecting `end'
+app/controllers/api/v1/reviews_controller.rb:8: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/reviews_controller.rb:12: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/reviews_controller.rb:21: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/reviews_controller.rb:29: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/reviews_controller.rb:68: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/api/v1/reviews_controller.rb:4: syntax error, unexpected local variable or method, expecting `end'
+app/controllers/api/v1/reviews_controller.rb:8: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/reviews_controller.rb:12: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/reviews_controller.rb:21: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/reviews_controller.rb:29: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/reviews_controller.rb:68: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/api/v1/book/1/reviews" for ::1 at 2020-08-21 18:40:09 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+SyntaxError (/home/qusai/rails_api/app/controllers/api/v1/reviews_controller.rb:8: syntax error, unexpected '\n', expecting =>
+/home/qusai/rails_api/app/controllers/api/v1/reviews_controller.rb:12: syntax error, unexpected '\n', expecting =>
+/home/qusai/rails_api/app/controllers/api/v1/reviews_controller.rb:21: syntax error, unexpected '\n', expecting =>
+/home/qusai/rails_api/app/controllers/api/v1/reviews_controller.rb:29: syntax error, unexpected '\n', expecting =>
+/home/qusai/rails_api/app/controllers/api/v1/reviews_controller.rb:68: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/api/v1/reviews_controller.rb:8: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/reviews_controller.rb:12: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/reviews_controller.rb:21: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/reviews_controller.rb:29: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/reviews_controller.rb:68: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/api/v1/reviews_controller.rb:8: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/reviews_controller.rb:12: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/reviews_controller.rb:21: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/reviews_controller.rb:29: syntax error, unexpected '\n', expecting =>
+app/controllers/api/v1/reviews_controller.rb:68: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/api/v1/book/1/reviews" for ::1 at 2020-08-21 18:41:13 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+Zeitwerk::NameError (expected file /home/qusai/rails_api/app/controllers/api/v1/reviews_controller.rb to define constant Api::V1::ReviewsController, but didn't):
+  
+zeitwerk (2.4.0) lib/zeitwerk/loader/callbacks.rb:17:in `on_file_autoloaded'
+zeitwerk (2.4.0) lib/zeitwerk/kernel.rb:28:in `block in require'
+zeitwerk (2.4.0) lib/zeitwerk/kernel.rb:27:in `tap'
+zeitwerk (2.4.0) lib/zeitwerk/kernel.rb:27:in `require'
+activesupport (6.0.3.2) lib/active_support/inflector/methods.rb:284:in `const_get'
+activesupport (6.0.3.2) lib/active_support/inflector/methods.rb:284:in `block in constantize'
+activesupport (6.0.3.2) lib/active_support/inflector/methods.rb:280:in `each'
+activesupport (6.0.3.2) lib/active_support/inflector/methods.rb:280:in `inject'
+activesupport (6.0.3.2) lib/active_support/inflector/methods.rb:280:in `constantize'
+activesupport (6.0.3.2) lib/active_support/dependencies/zeitwerk_integration.rb:19:in `constantize'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:89:in `controller_class_for'
+actionpack (6.0.3.2) lib/action_dispatch/http/parameters.rb:100:in `binary_params_for?'
+actionpack (6.0.3.2) lib/action_dispatch/http/parameters.rb:91:in `set_binary_encoding'
+actionpack (6.0.3.2) lib/action_dispatch/http/parameters.rb:69:in `path_parameters='
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:47:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/api/v1/book/1/reviews" for ::1 at 2020-08-21 18:41:48 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::ReviewsController#create as JSON
+  Parameters: {"review"=>{"title"=>"qusai11111112edjsad", "recommend_rating"=>"9", "current_rating"=>"1"}, "book_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "current_rating", "recommend_rating", "average_rating", "user_id", "book_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "qusai11111112edjsad"], ["current_rating", 1], ["recommend_rating", 9], ["average_rating", 5], ["user_id", 3], ["book_id", 1], ["created_at", "2020-08-21 15:41:49.011669"], ["updated_at", "2020-08-21 15:41:49.011669"]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+Completed 200 OK in 41ms (Views: 0.6ms | ActiveRecord: 4.7ms | Allocations: 26588)
+
+
+Started POST "/api/v1/book/1/reviews" for ::1 at 2020-08-21 18:42:06 +0300
+Processing by Api::V1::ReviewsController#create as JSON
+  Parameters: {"review"=>{"title"=>"qusai11111112edjsad", "recommend_rating"=>"9", "current_rating"=>"1"}, "book_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "current_rating", "recommend_rating", "average_rating", "user_id", "book_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "qusai11111112edjsad"], ["current_rating", 1], ["recommend_rating", 9], ["average_rating", 5], ["user_id", 3], ["book_id", 1], ["created_at", "2020-08-21 15:42:06.125546"], ["updated_at", "2020-08-21 15:42:06.125546"]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+Completed 200 OK in 12ms (Views: 0.5ms | ActiveRecord: 3.4ms | Allocations: 6753)
+
+
+Started POST "/api/v1/book/1/reviews" for ::1 at 2020-08-21 18:42:06 +0300
+Processing by Api::V1::ReviewsController#create as JSON
+  Parameters: {"review"=>{"title"=>"qusai11111112edjsad", "recommend_rating"=>"9", "current_rating"=>"1"}, "book_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mReview Create (0.8ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "current_rating", "recommend_rating", "average_rating", "user_id", "book_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "qusai11111112edjsad"], ["current_rating", 1], ["recommend_rating", 9], ["average_rating", 5], ["user_id", 3], ["book_id", 1], ["created_at", "2020-08-21 15:42:06.974144"], ["updated_at", "2020-08-21 15:42:06.974144"]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+Completed 200 OK in 16ms (Views: 1.2ms | ActiveRecord: 4.8ms | Allocations: 6741)
+
+
+Started POST "/api/v1/book/1/reviews" for ::1 at 2020-08-21 18:42:07 +0300
+Processing by Api::V1::ReviewsController#create as JSON
+  Parameters: {"review"=>{"title"=>"qusai11111112edjsad", "recommend_rating"=>"9", "current_rating"=>"1"}, "book_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mReview Create (0.7ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "current_rating", "recommend_rating", "average_rating", "user_id", "book_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "qusai11111112edjsad"], ["current_rating", 1], ["recommend_rating", 9], ["average_rating", 5], ["user_id", 3], ["book_id", 1], ["created_at", "2020-08-21 15:42:07.649213"], ["updated_at", "2020-08-21 15:42:07.649213"]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+Completed 200 OK in 13ms (Views: 0.5ms | ActiveRecord: 3.6ms | Allocations: 6740)
+
+
+Started POST "/api/v1/book/1/reviews" for ::1 at 2020-08-21 18:42:08 +0300
+Processing by Api::V1::ReviewsController#create as JSON
+  Parameters: {"review"=>{"title"=>"qusai11111112edjsad", "recommend_rating"=>"9", "current_rating"=>"1"}, "book_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "current_rating", "recommend_rating", "average_rating", "user_id", "book_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "qusai11111112edjsad"], ["current_rating", 1], ["recommend_rating", 9], ["average_rating", 5], ["user_id", 3], ["book_id", 1], ["created_at", "2020-08-21 15:42:08.223297"], ["updated_at", "2020-08-21 15:42:08.223297"]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+Completed 200 OK in 18ms (Views: 0.5ms | ActiveRecord: 3.1ms | Allocations: 6750)
+
+
+Started POST "/api/v1/book/2/reviews" for ::1 at 2020-08-21 18:42:13 +0300
+Processing by Api::V1::ReviewsController#create as JSON
+  Parameters: {"review"=>{"title"=>"qusai11111112edjsad", "recommend_rating"=>"9", "current_rating"=>"1"}, "book_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "current_rating", "recommend_rating", "average_rating", "user_id", "book_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "qusai11111112edjsad"], ["current_rating", 1], ["recommend_rating", 9], ["average_rating", 5], ["user_id", 3], ["book_id", 2], ["created_at", "2020-08-21 15:42:13.573253"], ["updated_at", "2020-08-21 15:42:13.573253"]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+Completed 200 OK in 12ms (Views: 0.5ms | ActiveRecord: 3.2ms | Allocations: 6748)
+
+
+Started POST "/api/v1/book/3/reviews" for ::1 at 2020-08-21 18:42:15 +0300
+Processing by Api::V1::ReviewsController#create as JSON
+  Parameters: {"review"=>{"title"=>"qusai11111112edjsad", "recommend_rating"=>"9", "current_rating"=>"1"}, "book_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "current_rating", "recommend_rating", "average_rating", "user_id", "book_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "qusai11111112edjsad"], ["current_rating", 1], ["recommend_rating", 9], ["average_rating", 5], ["user_id", 3], ["book_id", 3], ["created_at", "2020-08-21 15:42:15.548688"], ["updated_at", "2020-08-21 15:42:15.548688"]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 5.3ms | Allocations: 6748)
+
+
+Started POST "/api/v1/book/4/reviews" for ::1 at 2020-08-21 18:42:19 +0300
+Processing by Api::V1::ReviewsController#create as JSON
+  Parameters: {"review"=>{"title"=>"qusai11111112edjsad", "recommend_rating"=>"9", "current_rating"=>"1"}, "book_id"=>"4"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "current_rating", "recommend_rating", "average_rating", "user_id", "book_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "qusai11111112edjsad"], ["current_rating", 1], ["recommend_rating", 9], ["average_rating", 5], ["user_id", 3], ["book_id", 4], ["created_at", "2020-08-21 15:42:19.773340"], ["updated_at", "2020-08-21 15:42:19.773340"]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+Completed 200 OK in 14ms (Views: 0.4ms | ActiveRecord: 4.0ms | Allocations: 6745)
+
+
+Started POST "/api/v1/book/7/reviews" for ::1 at 2020-08-21 18:42:27 +0300
+Processing by Api::V1::ReviewsController#create as JSON
+  Parameters: {"review"=>{"title"=>"qusai11111112edjsad", "recommend_rating"=>"9", "current_rating"=>"1"}, "book_id"=>"7"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("title", "current_rating", "recommend_rating", "average_rating", "user_id", "book_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "qusai11111112edjsad"], ["current_rating", 1], ["recommend_rating", 9], ["average_rating", 5], ["user_id", 3], ["book_id", 7], ["created_at", "2020-08-21 15:42:27.669365"], ["updated_at", "2020-08-21 15:42:27.669365"]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:20:in `create'
+Completed 200 OK in 12ms (Views: 0.6ms | ActiveRecord: 3.8ms | Allocations: 6152)
+
+
+Started GET "/api/v1/book/1/reviews" for ::1 at 2020-08-21 18:42:42 +0300
+Processing by Api::V1::ReviewsController#index as JSON
+  Parameters: {"review"=>{"title"=>"qusai11111112edjsad", "recommend_rating"=>"9", "current_rating"=>"1"}, "book_id"=>"1"}
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:51:in `load_book'
+Filter chain halted as :load_book rendered or redirected
+Completed 404 Not Found in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 834)
+
+
+Started GET "/api/v1/book/2/reviews" for ::1 at 2020-08-21 18:50:34 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::ReviewsController#index as JSON
+  Parameters: {"review"=>{"title"=>"qusai11111112edjsad", "recommend_rating"=>"9", "current_rating"=>"1"}, "book_id"=>"2"}
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:51:in `load_book'
+Filter chain halted as :load_book rendered or redirected
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 832)
+
+
+Started GET "/api/v1/book/2" for ::1 at 2020-08-21 18:50:40 +0300
+Processing by Api::V1::BookController#show as JSON
+  Parameters: {"review"=>{"title"=>"qusai11111112edjsad", "recommend_rating"=>"9", "current_rating"=>"1"}, "id"=>"2"}
+  [1m[36mBook Load (0.3ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/book_controller.rb:14:in `load_book'
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 973)
+
+
+Started GET "/api/v1/book/1" for ::1 at 2020-08-21 18:50:51 +0300
+Processing by Api::V1::BookController#show as JSON
+  Parameters: {"review"=>{"title"=>"qusai11111112edjsad", "recommend_rating"=>"9", "current_rating"=>"1"}, "id"=>"1"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/book_controller.rb:14:in `load_book'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 808)
+
+
+Started GET "/api/v1/book/1/reviews" for ::1 at 2020-08-21 18:50:57 +0300
+Processing by Api::V1::ReviewsController#index as JSON
+  Parameters: {"review"=>{"title"=>"qusai11111112edjsad", "recommend_rating"=>"9", "current_rating"=>"1"}, "book_id"=>"1"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:51:in `load_book'
+Filter chain halted as :load_book rendered or redirected
+Completed 404 Not Found in 2ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 813)
+
+
+Started GET "/api/v1/book/1/reviews" for ::1 at 2020-08-21 18:51:36 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::ReviewsController#index as JSON
+  Parameters: {"review"=>{"title"=>"qusai11111112edjsad", "recommend_rating"=>"9", "current_rating"=>"1"}, "book_id"=>"1"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:51:in `load_book'
+Filter chain halted as :load_book rendered or redirected
+Completed 404 Not Found in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1955)
+
+
+Started GET "/api/v1/book/1/reviews" for ::1 at 2020-08-21 18:51:53 +0300
+Processing by Api::V1::ReviewsController#index as JSON
+  Parameters: {"book_id"=>"1"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:51:in `load_book'
+Filter chain halted as :load_book rendered or redirected
+Completed 404 Not Found in 2ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 805)
+
+
+Started GET "/api/v1/book/1/reviews" for ::1 at 2020-08-21 18:53:26 +0300
+Processing by Api::V1::ReviewsController#index as JSON
+  Parameters: {"book_id"=>"1"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:51:in `load_book'
+Filter chain halted as :load_book rendered or redirected
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 805)
+
+
+Started GET "/api/v1/book/1/reviews" for ::1 at 2020-08-21 18:53:49 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::ReviewsController#index as JSON
+  Parameters: {"book_id"=>"1"}
+  [1m[36mBook Load (0.3ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:52:in `load_book'
+Filter chain halted as :load_book rendered or redirected
+Completed 404 Not Found in 29849ms (Views: 0.5ms | ActiveRecord: 1.1ms | Allocations: 48808)
+
+
+Started GET "/api/v1/book/1/reviews" for ::1 at 2020-08-21 18:54:24 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::ReviewsController#index as JSON
+  Parameters: {"book_id"=>"1"}
+  [1m[36mBook Load (0.3ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:52:in `load_book'
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = ?[0m  [["book_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `render_response'
+Completed 200 OK in 3762ms (Views: 7.4ms | ActiveRecord: 2.3ms | Allocations: 16502)
+
+
+Started PUT "/api/v1/book/1/reviews/1" for ::1 at 2020-08-21 18:56:49 +0300
+Processing by Api::V1::ReviewsController#update as JSON
+  Parameters: {"review"=>{"title"=>"updated", "recommend_rating"=>"10", "current_rating"=>"10"}, "book_id"=>"1", "id"=>"1"}
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:60:in `load_review'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:38:in `update'
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.1ms | Allocations: 8099)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/concerns/authenticate.rb:13:in `valid_user'
+app/controllers/api/v1/reviews_controller.rb:38:in `update'
+Started PUT "/api/v1/book/1/review/1" for ::1 at 2020-08-21 18:57:05 +0300
+  
+ActionController::RoutingError (No route matches [PUT] "/api/v1/book/1/review/1"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started PUT "/api/v1/book/1/reviews/1" for ::1 at 2020-08-21 18:57:19 +0300
+Processing by Api::V1::ReviewsController#update as JSON
+  Parameters: {"review"=>{"title"=>"updated", "recommend_rating"=>"10", "current_rating"=>"10"}, "book_id"=>"1", "id"=>"1"}
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:60:in `load_review'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:38:in `update'
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms | Allocations: 1323)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/concerns/authenticate.rb:13:in `valid_user'
+app/controllers/api/v1/reviews_controller.rb:38:in `update'
+Started GET "/api/v1/book/1/reviews/1" for ::1 at 2020-08-21 18:57:48 +0300
+Processing by Api::V1::ReviewsController#show as JSON
+  Parameters: {"review"=>{"title"=>"updated", "recommend_rating"=>"10", "current_rating"=>"10"}, "book_id"=>"1", "id"=>"1"}
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:60:in `load_review'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 820)
+
+
+Started PUT "/api/v1/book/1/reviews/1" for ::1 at 2020-08-21 18:57:55 +0300
+Processing by Api::V1::ReviewsController#update as JSON
+  Parameters: {"review"=>{"title"=>"updated", "recommend_rating"=>"10", "current_rating"=>"10"}, "book_id"=>"1", "id"=>"1"}
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:60:in `load_review'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:38:in `update'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.3ms | Allocations: 1324)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/concerns/authenticate.rb:13:in `valid_user'
+app/controllers/api/v1/reviews_controller.rb:38:in `update'
+Started DELETE "/api/v1/book/1/reviews/1" for ::1 at 2020-08-21 18:58:16 +0300
+  
+AbstractController::ActionNotFound (The action 'destroy' could not be found for Api::V1::ReviewsController):
+  
+actionpack (6.0.3.2) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started DELETE "/api/v1/book/1/reviews/1" for ::1 at 2020-08-21 18:58:39 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::ReviewsController#destroy as JSON
+  Parameters: {"review"=>{"title"=>"updated", "recommend_rating"=>"10", "current_rating"=>"10"}, "book_id"=>"1", "id"=>"1"}
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:60:in `load_review'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:38:in `destroy'
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.3ms | Allocations: 13721)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/concerns/authenticate.rb:13:in `valid_user'
+app/controllers/api/v1/reviews_controller.rb:38:in `destroy'
+Started DELETE "/api/v1/book/1/reviews/1" for ::1 at 2020-08-21 18:58:54 +0300
+Processing by Api::V1::ReviewsController#destroy as JSON
+  Parameters: {"review"=>{"title"=>"updated", "recommend_rating"=>"10", "current_rating"=>"10"}, "book_id"=>"1", "id"=>"1"}
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:60:in `load_review'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:38:in `destroy'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.3ms | Allocations: 1323)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/concerns/authenticate.rb:13:in `valid_user'
+app/controllers/api/v1/reviews_controller.rb:38:in `destroy'
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /home/qusai/.rbenv/versions/2.7.1/bin/rake:23)
+Started DELETE "/api/v1/book/1/reviews/1" for ::1 at 2020-08-21 18:59:41 +0300
+Processing by Api::V1::ReviewsController#destroy as JSON
+  Parameters: {"review"=>{"title"=>"updated", "recommend_rating"=>"10", "current_rating"=>"10"}, "book_id"=>"1", "id"=>"1"}
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:60:in `load_review'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:38:in `destroy'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms | Allocations: 1323)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/concerns/authenticate.rb:13:in `valid_user'
+app/controllers/api/v1/reviews_controller.rb:38:in `destroy'
+Started PUT "/api/v1/book/1/reviews/1" for ::1 at 2020-08-21 18:59:48 +0300
+Processing by Api::V1::ReviewsController#update as JSON
+  Parameters: {"review"=>{"title"=>"updated", "recommend_rating"=>"10", "current_rating"=>"10"}, "book_id"=>"1", "id"=>"1"}
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:60:in `load_review'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:27:in `update'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.3ms | Allocations: 1323)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/concerns/authenticate.rb:13:in `valid_user'
+app/controllers/api/v1/reviews_controller.rb:27:in `update'
+Started PUT "/api/v1/book/1/reviews/1" for ::1 at 2020-08-21 19:00:56 +0300
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::ReviewsController#update as JSON
+  Parameters: {"review"=>{"title"=>"updated", "recommend_rating"=>"10", "current_rating"=>"10"}, "book_id"=>"1", "id"=>"1"}
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:60:in `load_review'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ (byebug):1:in `update'
+Completed 500 Internal Server Error in 79363ms (ActiveRecord: 2.3ms | Allocations: 157243)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/concerns/authenticate.rb:13:in `valid_user'
+app/controllers/api/v1/reviews_controller.rb:28:in `update'
+Started PUT "/api/v1/book/1/reviews/1" for ::1 at 2020-08-21 19:02:22 +0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::ReviewsController#update as JSON
+  Parameters: {"review"=>{"title"=>"updated", "recommend_rating"=>"10", "current_rating"=>"10"}, "book_id"=>"1", "id"=>"1"}
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:60:in `load_review'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ (byebug):1:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:29:in `update'
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:29:in `update'
+  [1m[36mReview Update (0.3ms)[0m  [1m[33mUPDATE "reviews" SET "title" = ?, "current_rating" = ?, "recommend_rating" = ?, "average_rating" = ?, "updated_at" = ? WHERE "reviews"."id" = ?[0m  [["title", "updated"], ["current_rating", 10], ["recommend_rating", 10], ["average_rating", 10], ["updated_at", "2020-08-21 16:04:01.492280"], ["id", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:29:in `update'
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:29:in `update'
+Completed 200 OK in 99206ms (Views: 0.7ms | ActiveRecord: 5.9ms | Allocations: 74463)
+
+
+Started DELETE "/api/v1/book/1/reviews/1" for ::1 at 2020-08-21 19:04:32 +0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::ReviewsController#destroy as JSON
+  Parameters: {"review"=>{"title"=>"updated", "recommend_rating"=>"10", "current_rating"=>"10"}, "book_id"=>"1", "id"=>"1"}
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:59:in `load_review'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:38:in `destroy'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = ? LIMIT ?[0m  [["authentication_token", "4jeQ7oweWE8cqnqc98ULz3BX"], ["LIMIT", 1]]
+  ↳ app/controllers/concerns/authenticate.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:39:in `destroy'
+  [1m[36mReview Destroy (0.3ms)[0m  [1m[31mDELETE FROM "reviews" WHERE "reviews"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/reviews_controller.rb:39:in `destroy'
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/reviews_controller.rb:39:in `destroy'
+Completed 200 OK in 27ms (Views: 0.2ms | ActiveRecord: 6.3ms | Allocations: 17167)
+
+
